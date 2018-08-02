@@ -1,0 +1,30 @@
+	# -- Questao 1 --  
+	  
+	# Retorne a lista de módulos I/OT com código, cor, comodo e sala.  
+	SELECT iot.Codigo, iot.Cor, locale.Comodo, locale.Sala   
+	FROM Localidade as locale  
+	INNER JOIN Modulo as iot   
+	ON locale.ID_Modulo = iot.ID;  
+
+	# -- Questao 2 --  
+	  
+	# Retorne o número de locais
+	SELECT Setor, Count(*) AS Qtd_Locais  
+	FROM Localidade;  
+	  
+
+	# -- Questao 3 --  
+	  
+	#Retorne a lista de usuários e seus gerentes.
+       # Quando planejei o bd, gerente era apenas um usuário com ID_Admin não nulo, então abaixo apenas relacionei como listar usuário e administradores individualmente
+
+	#para usuario comum
+	SELECT Nome, CPF, Email,  
+	FROM Usuario 
+	WHERE ID_Admin IS NULL;   
+
+	#para usuarios administradores
+	SELECT Nome, CPF, Email,  
+	FROM Usuario 
+	WHERE ID_Admin IS NOT NULL; 
+
